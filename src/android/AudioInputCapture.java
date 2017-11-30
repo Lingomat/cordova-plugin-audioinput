@@ -58,8 +58,8 @@ public class AudioInputCapture extends CordovaPlugin
 	       this.channels = args.getInt(2);
 	       this.format = args.getString(3);
 	       this.audioSource = args.getInt(4);
-	       String fileUrlString = args.getString(5);
-	       if (fileUrlString != null) {
+	       if (!args.isNull(5)) {
+	          String fileUrlString = args.getString(5);
 		  this.fileUrl = new URI(fileUrlString);
 		  // ensure it's a file URL
 		  new File(this.fileUrl);
@@ -135,12 +135,12 @@ public class AudioInputCapture extends CordovaPlugin
                 this.channels = args.getInt(2);
                 this.format = args.getString(3);
                 this.audioSource = args.getInt(4);
-		String fileUrlString = args.getString(5);
-		if (fileUrlString != null) {
-		   this.fileUrl = new URI(fileUrlString);
-		   // ensure it's a file URL
-		   new File(this.fileUrl);
-		}
+		if (!args.isNull(5)) {
+	          String fileUrlString = args.getString(5);
+		  this.fileUrl = new URI(fileUrlString);
+		  // ensure it's a file URL
+		  new File(this.fileUrl);
+	       }
 
                 promptForRecord();
             }
